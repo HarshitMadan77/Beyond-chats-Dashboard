@@ -203,7 +203,7 @@ const ViewTrainingStatusDialog = ({ openTasksDialog, setOpenTasksDialog }) => {
 							renderCell: (params) => {
 								return params?.value ? (
 									<IconButton
-										color="secondary"
+										color="tertiary"
 										onClick={() => handleDelete({ source_url: params?.value })}
 									>
 										<Delete />

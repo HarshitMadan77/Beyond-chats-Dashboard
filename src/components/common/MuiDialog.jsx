@@ -69,7 +69,7 @@ const MuiDialog = ({
 			</DialogContent>
 			{!disableButtons ? (
 				<DialogActions>
-					<Button onClick={onClose} color="secondary" variant="outlined">
+					<Button onClick={onClose} color="tertiary" variant="outlined">
 						{cancelButtonText}
 					</Button>
 					{onSubmit ? (

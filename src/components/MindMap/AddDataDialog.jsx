@@ -238,9 +238,9 @@ const AddDataDialog = ({ openAddDialog, setOpenAddDialog, setData }) => {
 								borderRadius: "4px",
 								padding: "10px 20px",
 								color: option === type ? "white" : "black",
-								backgroundColor: option === type ? "var(--primary)" : "white",
+								backgroundColor: option === type ? "#008080" : "white",
 								flex: "0.5",
-								border: "2px solid var(--primary)",
+								border: "2px solid #008080",
 							}}
 						/>
 					))}
@@ -320,7 +320,7 @@ const AddDataDialog = ({ openAddDialog, setOpenAddDialog, setData }) => {
 									{selectedFile.name}
 								</Typography>
 								<IconButton
-									color="secondary"
+									color="tertiary"
 									aria-label="Remove"
 									onClick={() =>
 										setSelectedFiles((prev) =>

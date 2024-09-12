@@ -213,14 +213,19 @@ const theme = createTheme({
 	},
 	palette: {
 		primary: {
-			dark: "#333bc7",
-			main: "#2872FA",
-			light: "#e3f2ff",
+			dark: "#006767",
+			main: "#008080",
+			light: "#a1ccd0",
 		},
 		secondary: {
-			dark: "#98004c",
-			main: "#fa2871",
+			dark: "#e6ac00",
+			main: "#FFBF00",
 			light: "#ffe3eb",
+		},
+		tertiary: { 
+			dark: "#b71c1c", 
+			main: "#f44336", 
+			light: "#ffcdd2", 
 		},
 	},
 });

@@ -344,10 +344,10 @@ const MindMap = () => {
 							<EditIcon />
 						</IconButton>
 						<IconButton
-							color="secondary"
+							color="tertiary"
 							onClick={() => handleDelete(params.row.vector_id)}
 						>
-							<DeleteIcon />
+							<DeleteIcon color="tertiary"/>
 						</IconButton>
 					</>
 				),
@@ -407,6 +407,7 @@ const MindMap = () => {
 		// return addBeyondChat();
 	}, [org.host_url, page, order, sortBy]);
 	const getRowId = (row) => row.vector_id; // Assuming vector_id is the unique identifier for each row
+	const isMobile = useMediaQuery('(max-width:600px)');
 
 	return (
 		<>
@@ -425,10 +426,10 @@ const MindMap = () => {
 					<Button
 						variant="contained"
 						color="secondary"
-						startIcon={<HistoryIcon />}
+						startIcon={<HistoryIcon sx={{ color: "white" }} />}
 						onClick={handleOpenTasksDialog}
 					>
-						<Typography variant="h6" component="span" align="center">
+						<Typography variant="h6" component="span" align="center" sx={{ color: "white" }}>
 							Data Training Status
 						</Typography>
 					</Button>
@@ -464,47 +465,61 @@ const MindMap = () => {
 				<form
 					onSubmit={handleSubmit(searchVectors)}
 					className={classes.search_container}
-				>
+					style={{
+						display: 'flex',
+						flexDirection: isMobile ? 'column' : 'row', 
+						alignItems: isMobile ? 'center' : 'flex-start', 
+						gap: '16px',
+						width: '100%',
+						maxWidth: isMobile ? 'none' : '800px', 
+						margin: '0 auto', 
+					}}
+					>
 					<TextField
 						label="Search"
 						variant="outlined"
 						error={errors?.q?.type}
 						helperText={errors?.q?.message}
-						sx={{ mt: 1 }}
+						sx={{ width: isMobile ? '80%' : '300px' }} 
 						size="small"
 						{...register("q", {
-							required: "Required",
+						required: "Required",
 						})}
 					/>
-					<TextField
-						select
-						label="Results"
-            defaultValue={3}
-            sx={{ m: 1, minWidth: 120 }}
-            size="small"
-						{...register("numResults")}
-					>
-						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 50].map((value) => (
-							<MenuItem key={value} value={value}>
-								{value}
-							</MenuItem>
-						))}
-					</TextField>
-
-					<Button type="submit" variant="contained" sx={{ m: 1 }}>
-						Search
-					</Button>
-					{hasSearched ? (
-						<Button
-							color="secondary"
-							variant="outlined"
-							sx={{ my: 1 }}
-							onClick={clearResults}
+					<div style={{ 
+						display: 'flex', 
+						flexDirection: isMobile ? 'row' : 'row', 
+						justifyContent: isMobile ? 'space-between' : 'center',
+						gap: isMobile ? '10px' : '10px'
+						}}>
+						<TextField
+							select
+							label="Results"
+							defaultValue={3}
+							sx={{ width: isMobile ? '180px' : '100px' }} 
+							size="small"
+							{...register("numResults")}
 						>
-							Clear Results
+							{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 50].map((value) => (
+								<MenuItem key={value} value={value}>
+									{value}
+								</MenuItem>
+							))}
+						</TextField>
+						<Button 
+							type="submit" 
+							variant="contained" 
+							sx={{ 
+								minWidth: isMobile ? '150px' : '120px', 
+								height: '37px'
+							}}
+						>
+							SEARCH
 						</Button>
-					) : null}
+					</div>
 				</form>
+
+
 			</div>
 
 			<Box sx={{ padding: "10px", borderRadius: "8px", height: "100%" }}>
@@ -526,7 +541,8 @@ const MindMap = () => {
 						</Suspense>
 					)
 				) : (
-					<Box sx={{ width: "100%", minWidth: "960px" }}>
+					<Box sx={{ width: "100%", minWidth: "960px",
+					}}>
 						<DataGrid
 							rows={data}
 							columns={columns}

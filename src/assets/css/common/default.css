@@ -38,13 +38,13 @@ body {
 	--white: #fff;
 	--black: #1d1d1d;
 
-	--primary: #2872fa;
-	--primary-light: #e3f2ff;
-	--primary-dark: #333bc7;
+	--primary: #008080;
+	--primary-light: #a1ccd0;
+	--primary-dark: #006767;
 
-	--secondary: #98004c;
+	--secondary: #ff0000;
 	--secondary-light: #ffe3eb;
-	--secondary-main: #fa2871;
+	--secondary-main: #ff0000;
 
 	--color4: #ff0000;
 	--color5: #1d1d1d;
